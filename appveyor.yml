@@ -10,8 +10,8 @@ environment:
   PDFium_BRANCH: $(APPVEYOR_REPO_TAG_NAME)
 
 configuration:
-  - Debug
   - Release
+  - Debug
 
 platform:
   - x86
@@ -26,12 +26,3 @@ artifacts:
   - path: pdfium-*.zip
     name: PDFium library
 
-deploy:
-  - provider: GitHub
-    tag: $(APPVEYOR_REPO_TAG_NAME)
-    description: "This version was built with branch $(APPVEYOR_REPO_TAG_NAME) of PDFium"
-    force_update: true
-    auth_token:
-      secure: JH8IVbdgVLz16ZXQLO41jQ5OsC7wR8IMRPAzinrdqpvgfhe/btgtr1xZ5trO2Eux
-    on:
-      appveyor_repo_tag: true
