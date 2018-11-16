@@ -51,10 +51,7 @@ git.exe checkout chromium/3538 && call gclient sync
 
 : Patch
 cd %PDFium_SOURCE_DIR%
-copy "%PDFium_PATCH_DIR%\resources.rc" . || exit /b
-git.exe apply -v "%PDFium_PATCH_DIR%\shared_library.patch" || exit /b
-git.exe apply -v "%PDFium_PATCH_DIR%\relative_includes.patch" || exit /b
-git.exe -C build apply -v "%PDFium_PATCH_DIR%\rc_compiler.patch" || exit /b
+git.exe apply -v "%PDFium_PATCH_DIR%\patch.diff" || exit /b
 
 : Configure
 copy %PDFium_ARGS% %PDFium_BUILD_DIR%\args.gn
@@ -65,7 +62,7 @@ if "%PLATFORM%"=="x86" echo target_cpu="x86" >> %PDFium_BUILD_DIR%\args.gn
 call gn gen %PDFium_BUILD_DIR% || exit /b
 
 : Build
-call ninja -C %PDFium_BUILD_DIR% pdfium || exit /b
+call ninja -C %PDFium_BUILD_DIR% -j 2 pdfium || exit /b
 
 : Install
 echo on
