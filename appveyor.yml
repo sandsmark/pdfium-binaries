@@ -7,7 +7,7 @@ branches:
 environment:
   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
   GYP_MSVS_VERSION: 2017
-  PDFium_BRANCH: $(APPVEYOR_REPO_TAG_NAME)
+  PDFium_BRANCH: chromium/3538
 
 configuration:
   - Release

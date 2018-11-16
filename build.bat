@@ -47,7 +47,7 @@ call gclient sync || exit /b
 : Checkout branch (or ignore if it doesn't exist)
 echo on
 cd %PDFium_SOURCE_DIR%
-git.exe checkout %PDFium_BRANCH% && call gclient sync
+git.exe checkout chromium/3538 && call gclient sync
 
 : Patch
 cd %PDFium_SOURCE_DIR%
