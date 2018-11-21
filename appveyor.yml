@@ -11,6 +11,7 @@ environment:
 
 configuration:
   - Release
+  - Debug
 
 platform:
   - x86
